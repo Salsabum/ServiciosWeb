@@ -1,0 +1,20 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Archivos de compilación
+/target/
+/build/
+/out/
+
+# Logs
+*.log
+
+# Archivos sensibles
+.env
+*.key
+*.pem
+
+# Sistema
+.DS_Store
+Thumbs.db
