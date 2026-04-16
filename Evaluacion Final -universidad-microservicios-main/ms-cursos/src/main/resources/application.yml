@@ -1,0 +1,37 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: ms-cursos
+
+  datasource:
+    # Base en archivo para que los datos persistan entre reinicios
+    url: jdbc:h2:file:./data/cursosdb;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      # Mantiene tablas/datos existentes; no los borra al apagar
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  sql:
+    init:
+      # Ejecuta data.sql en cada arranque (usaremos MERGE para no duplicar)
+      mode: always
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9090/realms/universidad/protocol/openid-connect/certs
